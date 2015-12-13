@@ -28,23 +28,15 @@ $ sudo npm install -g grunt-cli
 ## Download Source
 You have to  use Git to directly clone the  repository:
 ```
-$ git clone https://github.com/meanjs/mean.git meanjs
+$ git clone https://github.com/davidwter/SocialNetwork.git SocialNetwork
 ```
-This will clone the latest version of the MEAN.JS repository to a **meanjs** folder.
+This will clone the latest version of SocialNetwork repository to a **SocialNetwork** folder.
 
-### Downloading The Repository Zip File
-Another way to use the MEAN.JS boilerplate is to download a zip copy from the [master branch on GitHub](https://github.com/meanjs/mean/archive/master.zip). You can also do this using `wget` command:
-```
-$ wget https://github.com/meanjs/mean/archive/master.zip -O meanjs.zip; unzip meanjs.zip; rm meanjs.zip
-```
-Don't forget to rename **mean-master** after your project name.
 
-## Quick Install
-Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from starting to develop you MEAN application.
 
-The first thing you should do is install the Node.js dependencies. The boilerplate comes pre-bundled with a package.json file that contains the list of modules you need to start your application, to learn more about the modules installed visit the NPM & Package.json section.
+The first thing you should do is install the Node.js dependencies. The project comes pre-bundled with a package.json file that contains the list of modules you need to start the application, to learn more about the modules installed visit the NPM & Package.json section.
 
-To install Node.js dependencies you're going to use npm again, in the application folder run this in the command-line:
+To install Node.js dependencies you're going to use npm , in the application folder run this in the command-line:
 
 ```
 $ npm install
@@ -64,56 +56,29 @@ $ grunt
 
 Your application should run on the 3000 port so in your browser just go to [http://localhost:3000](http://localhost:3000)
                             
-That's it! your application should be running by now, to proceed with your development check the other sections in this documentation. 
-If you encounter any problem try the Troubleshooting section.
+That's it! your application should be running by now
 
-## Development and deployment With Docker
+##Code Architecture
+Main files to give a look at are : 
+* SocialNetwork/app/models/user.server.model.js : the model of the mongoDB database
 
-* Install [Docker](http://www.docker.com/)
-* Install [Fig](https://github.com/orchardup/fig)
+Views : 
+* SocialNetwork/app/views/layout.server.view.html : main model for the html rendering of this single-page application
+* SocialNetwork/public/modules/core/views/social_feed.html : main page for social feed section
+* SocialNetwork/public/modules/core/views/contacts.html : main page for friends section
+* SocialNetwork/public/modules/users/views/authentication/signin.client.view.html : main page for signin process
+* SocialNetwork/public/modules/users/views/authentication/signup.client.view.html : main page for signup process
 
-* Local development and testing with fig: 
-```bash
-$ fig up
-```
+Controllers : 
+* SocialNetwork/app/controllers/users/users.authentication.server.controller.js : main controller for users authentication on server
+* SocialNetwork/app/controllers/friends.server.controller.js : controller for friends handling (server)
+* SocialNetwork/app/controllers/status.server.controller.js : controller for status handling (server)
+* SocialNetwork/public/modules/core/controllers/home.client.controller.js : controller for client side interactions
+* SocialNetwork/public/modules/users/controllers/authentication.client.controller.js : controller for authentication services (client)
 
-* Local development and testing with just Docker:
-```bash
-$ docker build -t mean .
-$ docker run -p 27017:27017 -d --name db mongo
-$ docker run -p 3000:3000 --link db:db_1 mean
-$
-```
-
-* To enable live reload forward 35729 port and mount /app and /public as volumes:
-```bash
-$ docker run -p 3000:3000 -p 35729:35729 -v /Users/mdl/workspace/mean-stack/mean/public:/home/mean/public -v /Users/mdl/workspace/mean-stack/mean/app:/home/mean/app --link db:db_1 mean
-```
-
-## Running in a secure environment
-To run your application in a secure manner you'll need to use OpenSSL and generate a set of self-signed certificates. Unix-based users can use the following commnad: 
-```
-$ sh generate-ssl-certs.sh
-```
-Windows users can follow instructions found [here](http://www.websense.com/support/article/kbarticle/How-to-use-OpenSSL-and-Microsoft-Certification-Authority)
-To generate the key and certificate and place them in the *config/sslcert* folder.
-
-## Getting Started With MEAN.JS
-You have your application running but there are a lot of stuff to understand, we recommend you'll go over the [Official Documentation](http://meanjs.org/docs.html). 
-In the docs we'll try to explain both general concepts of MEAN components and give you some guidelines to help you improve your development process. We tried covering as many aspects as possible, and will keep update it by your request, you can also help us develop the documentation better by checking out the *gh-pages* branch of this repository.
-
-## Community
-* Use to [Offical Website](http://meanjs.org) to learn about changes and the roadmap.
-* Join #meanjs on freenode.
-* Discuss it in the new [Google Group](https://groups.google.com/d/forum/meanjs)
-* Ping us on [Twitter](http://twitter.com/meanjsorg) and [Facebook](http://facebook.com/meanjs)
-
-## Live Example
-Browse the live MEAN.JS example on [http://meanjs.herokuapp.com](http://meanjs.herokuapp.com).
-
-## Credits
-Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
-The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and)
+Routes : 
+* SocialNetwork/public/modules/core/config/core.client.routes.js : routing, client side
+* SocialNetwork/app/routes/core.server.routes.js : routing, server side (API)
 
 ## License
 (The MIT License)
