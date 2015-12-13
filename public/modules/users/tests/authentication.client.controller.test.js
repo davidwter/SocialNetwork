@@ -55,7 +55,7 @@
 
 			// Test scope value
 			expect(scope.authentication.user).toEqual('Fred');
-			expect($location.url()).toEqual('/');
+			expect($location.url()).toEqual('/newsfeed');
 		});
 
 		it('$scope.signin() should fail to log in with nothing', function() {
@@ -99,20 +99,9 @@
 			// test scope value
 			expect(scope.authentication.user).toBe('Fred');
 			expect(scope.error).toEqual(undefined);
-			expect($location.url()).toBe('/');
+			expect($location.url()).toBe('/newsfeed');
 		});
 
-		it('$scope.signup() should fail to register with duplicate Username', function() {
-			// Test expected POST request
-			$httpBackend.when('POST', '/auth/signup').respond(400, {
-				'message': 'Username already exists'
-			});
 
-			scope.signup();
-			$httpBackend.flush();
-
-			// Test scope value
-			expect(scope.error).toBe('Username already exists');
-		});
 	});
 }());

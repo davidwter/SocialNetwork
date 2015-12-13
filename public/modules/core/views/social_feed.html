@@ -1,0 +1,95 @@
+<section data-ng-controller="HomeController" ng-init="getStatus()" >
+<div class="row wrapper border-bottom white-bg page-heading  >
+    <div class="col-lg-10">
+        <h2>News feed</h2>
+    </div>
+</div>
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form role="form" name="createStatusForm" class="form-horizontal" data-ng-submit="createStatus()">
+                        <div class="form-group">
+                            <div>
+                                <div class="input-group">
+                                    <input data-ng-model="status" type="text" placeholder="Update your status" class="form-control">
+                                    <span
+                                        class="input-group-btn">
+                                        <button  type="submit" class="btn btn-primary">Update!
+                                </button> </span></div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-12">
+
+            <div class="social-feed-box" data-ng-repeat="Status in StatusList">
+
+                <div class="social-avatar">
+                    <div class="media-body">
+                        <a href="#">
+                            {{Status.Author.displayName}}
+                        </a>
+                        <small class="text-muted">{{Status.Creation_Date| date:'medium'}}</small>
+                    </div>
+                </div>
+                <div class="social-body">
+                    <p>
+                        {{Status.Status}}
+                    </p>
+
+                </div>
+                <div class="social-footer" data-ng-controller="CommentController">
+                    <div class="social-comment" >
+                        <a href="" class="pull-left">
+
+                        </a>
+                        <div class="media-body">
+                            <form role="form" name="CreateCommentForm{{Status._id}}" class="form-horizontal" data-ng-submit="createComment()">
+                                <div>
+                                    <div class="input-group">
+                                        <input data-ng-model="comment" type="text" placeholder="Write comment..." class="form-control">
+                                    <span
+                                            class="input-group-btn">
+                                        <button  type="submit" class="btn btn-primary">Comment!
+                                        </button> </span></div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="social-comment" data-ng-repeat="Comment in Status.Comments">
+                        <a href="" class="pull-left">
+
+                        </a>
+                        <div class="media-body">
+                            <a href="#">
+                                {{Comment.Author.displayName}}
+                            </a>
+                                {{Comment.Comment}}
+                            <br/>
+                             -
+                            <small class="text-muted">{{Comment.Creation_Date| date:'medium'}}</small>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>

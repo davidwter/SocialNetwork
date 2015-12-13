@@ -43,6 +43,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 			if (isValid) {
 				$scope.success = $scope.error = null;
 				var user = new Users($scope.user);
+				//$scope.isTeacher = $scope.user.teacher;
 
 				user.$update(function(response) {
 					$scope.success = true;

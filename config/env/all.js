@@ -2,9 +2,9 @@
 
 module.exports = {
 	app: {
-		title: 'StartApp',
-		description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
-		keywords: 'MongoDB, Express, AngularJS, Node.js'
+		title: 'Social Network',
+		description: 'Social Network',
+		keywords: 'Social, network'
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
@@ -31,7 +31,12 @@ module.exports = {
 				'public/lib/angular-sanitize/angular-sanitize.js', 
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+				'public/lib/oclazyload/dist/ocLazyLoad.js',
+				'public/lib/slimscroll/jquery.slimscroll.js',
+				'public/lib/sweetalert/dist/sweetalert.min.js',
+				'public/lib/blockly/hopscotch.js'
+				
 			]
 		},
 		css: [

@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
+	ObjectId = Schema.ObjectId,
 	crypto = require('crypto');
 
 /**
@@ -28,14 +29,12 @@ var UserSchema = new Schema({
 	firstName: {
 		type: String,
 		trim: true,
-		default: '',
-		validate: [validateLocalStrategyProperty, 'Please fill in your first name']
+		default: ''
 	},
 	lastName: {
 		type: String,
 		trim: true,
-		default: '',
-		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
+		default: ''
 	},
 	displayName: {
 		type: String,
@@ -45,19 +44,17 @@ var UserSchema = new Schema({
 		type: String,
 		trim: true,
 		default: '',
-		validate: [validateLocalStrategyProperty, 'Please fill in your email'],
-		match: [/.+\@.+\..+/, 'Please fill a valid email address']
+		validate: [validateLocalStrategyProperty, 'Please enter your email address'],
+		match: [/.+\@.+\..+/, 'Please enter your email address']
 	},
 	username: {
 		type: String,
-		unique: 'testing error message',
-		required: 'Please fill in a username',
 		trim: true
 	},
 	password: {
 		type: String,
 		default: '',
-		validate: [validateLocalStrategyPassword, 'Password should be longer']
+		validate: [validateLocalStrategyPassword, 'Password too short ']
 	},
 	salt: {
 		type: String
@@ -88,8 +85,28 @@ var UserSchema = new Schema({
 	},
 	resetPasswordExpires: {
 		type: Date
-	}
+	},
+	Status : [{type:ObjectId, ref:'Status'}]
 });
+
+
+var StatusSchema = new Schema({
+        Status  : String,
+        Creation_Date : {type: Date, default: Date.now},
+        Author : {type:ObjectId, ref:'User'},
+        Comments : [{type:ObjectId, ref:'Comment'}]
+    }
+
+);
+
+var CommentSchema = new Schema({
+	Comment : String,
+	Creation_Date :  {type: Date, default: Date.now},
+	Author : {type:ObjectId, ref:'User'},
+	Status_id  : {type:ObjectId, ref:'Status'}
+});
+
+
 
 /**
  * Hook a pre save method to hash the password
@@ -144,3 +161,5 @@ UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {
 };
 
 mongoose.model('User', UserSchema);
+mongoose.model('Status',StatusSchema);
+mongoose.model('Comment',CommentSchema);

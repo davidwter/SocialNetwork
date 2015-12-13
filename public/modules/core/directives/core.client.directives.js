@@ -37,5 +37,36 @@ angular.module('core')
                 };
             }
         };
+    })
+    .directive('fullScroll', function ($timeout) {
+        return {
+        restrict: 'A',
+        link: function(scope, element) {
+            $timeout(function(){
+                element.slimscroll({
+                    height: '100%',
+                    railOpacity: 0.9
+                });
+
+            });
+        }
+    };
+    })
+    .directive('slimScroll', function ($timeout) {
+         return {
+        restrict: 'A',
+        scope: {
+            boxHeight: '@'
+        },
+        link: function(scope, element) {
+            $timeout(function(){
+                element.slimscroll({
+                    height: scope.boxHeight,
+                    railOpacity: 0.9
+                });
+
+            });
+        }
+    };
     });
 

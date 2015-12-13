@@ -50,6 +50,9 @@ module.exports = function(grunt) {
 			}
 		},
 		jshint: {
+			options: {
+				devel: true
+			},
 			all: {
 				src: watchFiles.clientJS.concat(watchFiles.serverJS),
 				options: {

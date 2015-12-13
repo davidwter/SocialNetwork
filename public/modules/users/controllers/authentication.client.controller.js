@@ -13,7 +13,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				$scope.authentication.user = response;
 
 				// And redirect to the index page
-				$location.path('/');
+				$location.path('/newsfeed');
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
@@ -23,9 +23,12 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 			$http.post('/auth/signin', $scope.credentials).success(function(response) {
 				// If successful we assign the response to the global user model
 				$scope.authentication.user = response;
+				//$scope.isTeacher = $scope.authentication.user.teacher;
 
 				// And redirect to the index page
-				$location.path('/');
+				//$window.location.href = 'http://'+ $window.location.host +":"+$window.location.port+"/login";
+
+				$location.path('/newsfeed');
 			}).error(function(response) {
 				$scope.error = response.message;
 			});

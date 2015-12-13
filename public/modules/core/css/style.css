@@ -6,6 +6,60 @@
  *   version 2.3
  *
 */
+
+#body_div {
+      height: 100%;
+      margin: 0;
+       background-color: rgb(59,174,181);
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+    table {
+      height: 100%;
+      width: 100%;
+    }
+    #blocklyArea {
+      height: 99%;
+    }
+    #stage{
+    background-color: rgb(40,40,40);
+    }
+    #myCanvas{
+    margin-left: 25px;
+    margin-top: 25px;
+    }
+    #startButton {
+    	float: right;
+    	margin-right: 40px;
+
+    }
+     #capacity {
+      color: red;
+    }
+    #capacityBox {
+    margin-left: 50px;
+    color:white;
+    }
+    .level_number {
+  border: solid 1px #ddd;
+  border-radius: 20px;
+  padding: 6px 12px;
+  color: white;
+}
+.level_dot {
+  border: solid 1px #ddd;
+	border-radius: 50%;
+	width: 15px;
+	height: 15px;
+  display: inline-block;
+}
+.level_done, .level_dot:hover, .level_number:hover {
+  background-color: rgb(165,215,219);
+  color: rgb(59,174,181);
+}
+
+
+    
 h1,
 h2,
 h3,

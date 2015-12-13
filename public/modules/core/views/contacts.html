@@ -1,0 +1,18 @@
+<div class="row wrapper border-bottom white-bg page-heading" >
+    <div class="col-lg-9">
+        <h2>Friends</h2>
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" data-ng-controller="FriendsController" ng-init="getFriends()">
+    <div class="row" data-ng-repeat="Friend in FriendsList">
+        <div class="col-lg-4">
+            <div class="contact-box">
+                <a ui-sref="profile">
+                    <h3><strong>{{Friend.email}}</strong></h3>
+                    <div class="clearfix"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
