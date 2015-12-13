@@ -80,6 +80,11 @@ Routes :
 * SocialNetwork/public/modules/core/config/core.client.routes.js : routing, client side
 * SocialNetwork/app/routes/core.server.routes.js : routing, server side (API)
 
+# TO DO
+* Add friendship functionnality (restrain status view to friends only)
+* Set new service getStatus, to be able to refresh status from comment controller (getStatus is not on Comment controller, hence cannot be called when creating comment)
+
+
 ## License
 (The MIT License)
 
